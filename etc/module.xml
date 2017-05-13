@@ -4,6 +4,8 @@
     <module name="MagentoHackathon_BatchApi" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Catalog" />
+            <module name="Magento_CatalogInventory" />
+            <module name="Magento_Customer" />
             <module name="Magento_Cms" />
         </sequence>
     </module>

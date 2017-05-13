@@ -20,6 +20,14 @@
         </resources>
     </route>
 
+    <!-- module-catalog-inventory -->
+    <route url="/V1/products/batch/:productSkus/stockItems/:itemIds" method="PUT">
+        <service class="MagentoHackathon\BatchApi\Api\BatchStockRegistryInterface" method="updateStockItemsBySkus"/>
+        <resources>
+            <resource ref="Magento_CatalogInventory::cataloginventory"/>
+        </resources>
+    </route>
+
     <!-- module-cms -->
     <route url="/V1/cmsPage/batch" method="POST">
         <service class="MagentoHackathon\BatchApi\Api\BatchPageRepositoryInterface" method="save"/>
@@ -34,7 +42,7 @@
         </resources>
     </route>
 
-    <!-- module customer -->
+    <!-- module-customer -->
     <route url="/V1/customers/batch" method="POST">
         <service class="MagentoHackathon\BatchApi\Api\BatchCustomerRepositoryInterface" method="save" />
         <resources>
