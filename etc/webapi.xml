@@ -6,4 +6,10 @@
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
+    <route url="/V1/categories/batch" method="POST">
+        <service class="MagentoHackathon\BatchApi\Api\BatchProductRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Magento_Catalog::categories" />
+        </resources>
+    </route>
 </routes>
