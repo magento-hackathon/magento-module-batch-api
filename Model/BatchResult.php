@@ -76,4 +76,20 @@ class BatchResult extends DataObject implements BatchResultInterface
     {
         return $this->setData(self::KEY_ERRORS, $errors);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDeleted()
+    {
+        return $this->getData(self::KEY_DELETED);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDeleted($deleted)
+    {
+        return $this->setData(self::KEY_DELETED, $deleted);
+    }
 }
