@@ -7,7 +7,7 @@
         </resources>
     </route>
     <route url="/V1/categories/batch" method="POST">
-        <service class="MagentoHackathon\BatchApi\Api\BatchProductRepositoryInterface" method="save" />
+        <service class="MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
