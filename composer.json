@@ -1,0 +1,20 @@
+{
+  "name": "magento-hackathon/magento-module-batch-api",
+  "description": "N/A",
+  "require": {
+    "magento/module-catalog": "*",
+    "magento/framework": "*"
+  },
+  "type": "magento2-module",
+  "license": [
+    "GPL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MagentoHackathon\\BatchApi\\": ""
+    }
+  }
+}
