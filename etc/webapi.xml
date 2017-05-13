@@ -33,8 +33,16 @@
             <resource ref="Magento_Cms::page"/>
         </resources>
     </route>
+
+    <!-- module customer -->
     <route url="/V1/customers/batch" method="POST">
         <service class="MagentoHackathon\BatchApi\Api\BatchCustomerRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Magento_Customer::manage" />
+        </resources>
+    </route>
+    <route url="/V1/customers/batch/:customerIds" method="DELETE">
+        <service class="MagentoHackathon\BatchApi\Api\BatchCustomerRepositoryInterface" method="deleteByIds" />
         <resources>
             <resource ref="Magento_Customer::manage" />
         </resources>

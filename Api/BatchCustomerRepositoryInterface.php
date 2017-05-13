@@ -13,4 +13,10 @@ interface BatchCustomerRepositoryInterface
      * @return \MagentoHackathon\BatchApi\Api\Data\BatchResultInterface
      */
     public function save($customers, $passwords = null);
+
+    /**
+     * @param int[] $customerIds
+     * @return \MagentoHackathon\BatchApi\Api\Data\BatchResultInterface
+     */
+    public function deleteByIds($customerIds);
 }

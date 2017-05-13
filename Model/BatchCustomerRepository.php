@@ -94,4 +94,30 @@ class BatchCustomerRepository implements BatchCustomerRepositoryInterface
 
         return $batchResult;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function deleteByIds($customerIds)
+    {
+        $result = [
+            'deleted' => 0,
+            'failed' => 0,
+            'errors' => []
+        ];
+
+        foreach ($customerIds as $customerId) {
+            try {
+                $this->customerRepository->deleteById($customerId);
+                $result['deleted']++;
+            } catch (\Exception $e) {
+                $result['failed']++;
+                $result['errors'][] = $e->getMessage();
+            }
+        }
+
+        /** @var BatchResultInterface $batchResult */
+        $batchResult = $this->batchResultFactory->create(['data' => $result]);
+        return $batchResult;
+    }
 }
