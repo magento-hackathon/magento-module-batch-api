@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- module-catalog -->
     <route url="/V1/products/batch" method="POST">
         <service class="MagentoHackathon\BatchApi\Api\BatchProductRepositoryInterface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::products" />
+        </resources>
+    </route>
+    <route url="/V1/categories/batch" method="POST">
+        <service class="MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Magento_Catalog::categories" />
+        </resources>
+    </route>
+    <route url="/V1/categories/batch/:categoryIds" method="DELETE">
+        <service class="MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface" method="deleteByIdentifiers" />
+        <resources>
+            <resource ref="Magento_Catalog::categories" />
+        </resources>
+    </route>
+
+    <!-- module-cms -->
+    <route url="/V1/cmsPage/batch" method="POST">
+        <service class="MagentoHackathon\BatchApi\Api\BatchPageRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Cms::page"/>
+        </resources>
+    </route>
+    <route url="/V1/cmsPage/batch/:pageId" method="DELETE">
+        <service class="MagentoHackathon\BatchApi\Api\BatchPageRepositoryInterface" method="deleteByIds"/>
+        <resources>
+            <resource ref="Magento_Cms::page"/>
         </resources>
     </route>
     <route url="/V1/customers/batch" method="POST">

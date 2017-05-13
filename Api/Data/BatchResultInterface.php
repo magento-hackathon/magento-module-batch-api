@@ -9,8 +9,8 @@ namespace MagentoHackathon\BatchApi\Api\Data;
  */
 interface BatchResultInterface
 {
-
     const KEY_SAVED = 'saved';
+    const KEY_DELETED = 'deleted';
     const KEY_SKIPPED = 'skipped';
     const KEY_FAILED = 'failed';
     const KEY_ERRORS = 'errors';
@@ -62,4 +62,16 @@ interface BatchResultInterface
      * @return $this
      */
     public function setErrors($errors);
+
+    /**
+     * @return string[]
+     */
+    public function getDeleted();
+
+    /**
+     * @param string[] $deleted
+     *
+     * @return $this
+     */
+    public function setDeleted($deleted);
 }
