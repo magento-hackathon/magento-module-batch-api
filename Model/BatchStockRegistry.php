@@ -1,13 +1,8 @@
 <?php
 
 namespace MagentoHackathon\BatchApi\Model;
-use Magento\CatalogInventory\Model\StockRegistry;
 use MagentoHackathon\BatchApi\Api\BatchStockRegistryInterface;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
-use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
-use Magento\CatalogInventory\Api\StockItemCriteriaInterfaceFactory;
-use Magento\Catalog\Model\ProductFactory;
+use Magento\CatalogInventory\Api\StockRegistryInterface;
 use MagentoHackathon\BatchApi\Api\Data\BatchResultInterfaceFactory;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\Framework\Exception\InputException;
@@ -17,22 +12,23 @@ use Magento\Framework\Exception\InputException;
  *
  * @package \MagentoHackathon\BatchApi\Model
  */
-class BatchStockRegistry extends StockRegistry implements BatchStockRegistryInterface
+class BatchStockRegistry implements BatchStockRegistryInterface
 {
+    /**
+     * @var StockRegistryInterface
+     */
+    protected $stockRegistry;
+
     /**
      * @var BatchResultInterfaceFactory
      */
     protected $batchResultFactory;
 
     public function __construct(
-        StockConfigurationInterface $stockConfiguration,
-        StockRegistryProviderInterface $stockRegistryProvider,
-        StockItemRepositoryInterface $stockItemRepository,
-        StockItemCriteriaInterfaceFactory $criteriaFactory,
-        ProductFactory $productFactory,
+        StockRegistryInterface $stockRegistry,
         BatchResultInterfaceFactory $batchResultFactory
     ) {
-        parent::__construct($stockConfiguration, $stockRegistryProvider, $stockItemRepository, $criteriaFactory, $productFactory);
+        $this->stockRegistry = $stockRegistry;
         $this->batchResultFactory = $batchResultFactory;
     }
 
@@ -62,17 +58,7 @@ class BatchStockRegistry extends StockRegistry implements BatchStockRegistryInte
                 /** @var StockItemInterface $stockItem */
                 $stockItem = $stockItems[$i];
 
-                $productId = $this->resolveProductId($productSku);
-                $websiteId = $stockItem->getWebsiteId() ?: null;
-                $origStockItem = $this->getStockItem($productId, $websiteId);
-                $data = $stockItem->getData();
-                if ($origStockItem->getItemId()) {
-                    unset($data['item_id']);
-                }
-                $origStockItem->addData($data);
-                $origStockItem->setProductId($productId);
-                $this->stockItemRepository->save($origStockItem)->getItemId();
-
+                $this->stockRegistry->updateStockItemBySku($productSku, $stockItem);
                 $result['saved']++;
             } catch (\Exception $e) {
                 $result['failed']++;
