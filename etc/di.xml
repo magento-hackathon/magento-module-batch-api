@@ -4,4 +4,5 @@
     <preference for="MagentoHackathon\BatchApi\Api\BatchProductRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchProductRepository" />
     <preference for="MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchCategoryRepository" />
     <preference for="MagentoHackathon\BatchApi\Api\BatchCustomerRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchCustomerRepository" />
+    <preference for="MagentoHackathon\BatchApi\Api\BatchPageRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchPageRepository" />
 </config>
