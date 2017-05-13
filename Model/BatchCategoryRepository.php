@@ -3,7 +3,6 @@
 namespace MagentoHackathon\BatchApi\Model;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Api\Data\CategoryInterface;
-use Magento\Framework\Exception\CouldNotSaveException;
 use MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface;
 use MagentoHackathon\BatchApi\Api\Data\BatchResultInterfaceFactory;
 
