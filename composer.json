@@ -3,6 +3,7 @@
   "description": "N/A",
   "require": {
     "magento/module-catalog": "*",
+    "magento/module-cms": "*",
     "magento/framework": "*"
   },
   "type": "magento2-module",
