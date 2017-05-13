@@ -2,5 +2,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="MagentoHackathon\BatchApi\Api\Data\BatchResultInterface" type="MagentoHackathon\BatchApi\Model\BatchResult" />
     <preference for="MagentoHackathon\BatchApi\Api\BatchProductRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchProductRepository" />
+    <preference for="MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchCategoryRepository" />
     <preference for="MagentoHackathon\BatchApi\Api\BatchCustomerRepositoryInterface" type="MagentoHackathon\BatchApi\Model\BatchCustomerRepository" />
 </config>
