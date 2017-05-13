@@ -60,4 +60,32 @@ class BatchCategoryRepository implements BatchCategoryRepositoryInterface
 
         return $batchResult;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function deleteByIdentifiers($categoryIds)
+    {
+        $result = [
+            'deleted' => 0,
+            'skipped' => 0,
+            'failed' => 0,
+            'errors' => []
+        ];
+
+        /** @var int $categoryId */
+        foreach ($categoryIds as $categoryId) {
+            try {
+                $this->categoryRepository->deleteByIdentifier($categoryId);
+                $result['deleted']++;
+            } catch (\Exception $e) {
+                $result['failed']++;
+                $result['errors'][] = $e->getMessage();
+            }
+        }
+
+        $batchResult = $this->batchResultFactory->create(['data' => $result]);
+
+        return $batchResult;
+    }
 }

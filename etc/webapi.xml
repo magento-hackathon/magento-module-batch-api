@@ -12,4 +12,10 @@
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
+    <route url="/V1/categories/batch/:categoryIds" method="DELETE">
+        <service class="MagentoHackathon\BatchApi\Api\BatchCategoryRepositoryInterface" method="deleteByIdentifiers" />
+        <resources>
+            <resource ref="Magento_Catalog::categories" />
+        </resources>
+    </route>
 </routes>
