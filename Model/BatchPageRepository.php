@@ -62,7 +62,7 @@ class BatchPageRepository implements BatchPageRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function deleteById($pageIds)
+    public function deleteByIds($pageIds)
     {
         $result = [
             'deleted' => 0,

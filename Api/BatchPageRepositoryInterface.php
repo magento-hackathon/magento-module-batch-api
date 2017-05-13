@@ -19,5 +19,5 @@ interface BatchPageRepositoryInterface
      * @param array $pageIds
      * @return \MagentoHackathon\BatchApi\Api\Data\BatchResultInterface
      */
-    public function deleteById($pageIds);
+    public function deleteByIds($pageIds);
 }
